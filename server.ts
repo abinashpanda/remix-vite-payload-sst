@@ -1,10 +1,29 @@
+import dotenv from 'dotenv'
 import { createRequestHandler } from '@remix-run/express'
 import { ServerBuild, installGlobals } from '@remix-run/node'
 import compression from 'compression'
 import express from 'express'
 import morgan from 'morgan'
+import payload from 'payload'
+import invariant from 'tiny-invariant'
+import payloadConfig from './payload.config'
+
+dotenv.config()
 
 installGlobals()
+
+const app = express()
+
+invariant(process.env.PAYLOAD_SECRET, 'PAYLOAD_SECRET is required')
+await payload.init({
+  express: app,
+  secret: process.env.PAYLOAD_SECRET,
+  config: payloadConfig,
+  onInit: () => {
+    payload.logger.info(`Payload Admin is running at ${payload.getAdminURL()}`)
+  },
+})
+app.use(payload.authenticate)
 
 const viteDevServer =
   process.env.NODE_ENV === 'production'
@@ -20,8 +39,6 @@ const remixHandler = createRequestHandler({
     ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build') as Promise<ServerBuild>
     : await import('./build/server/index.js'),
 })
-
-const app = express()
 
 app.use(compression())
 

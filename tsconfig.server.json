@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "files": [
+    "./payload.config.ts",
     "./server.ts"
   ],
   "compilerOptions": {

@@ -12,13 +12,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: viteBundler(),
-    vite: (incomingViteConfig) => ({
-      ...incomingViteConfig,
-      build: {
-        ...incomingViteConfig.build,
-        outDir: path.resolve(__dirname, 'build/payload'),
-      },
-    }),
+    buildPath: path.resolve(__dirname, 'build/payload'),
   },
   editor: lexicalEditor(),
   db: mongooseAdapter({
