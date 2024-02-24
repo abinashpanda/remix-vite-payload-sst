@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "files": [
+    "./server.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "build/express",
+    "noEmit": false
+  }
+}

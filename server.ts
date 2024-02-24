@@ -1,5 +1,5 @@
 import { createRequestHandler } from '@remix-run/express'
-import { installGlobals } from '@remix-run/node'
+import { ServerBuild, installGlobals } from '@remix-run/node'
 import compression from 'compression'
 import express from 'express'
 import morgan from 'morgan'
@@ -17,7 +17,7 @@ const viteDevServer =
 
 const remixHandler = createRequestHandler({
   build: viteDevServer
-    ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
+    ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build') as Promise<ServerBuild>
     : await import('./build/server/index.js'),
 })
 
