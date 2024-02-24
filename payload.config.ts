@@ -4,19 +4,22 @@ import { viteBundler } from '@payloadcms/bundler-vite'
 import { buildConfig } from 'payload/config'
 import path from 'path'
 import Users from './cms/collections/Users'
-import invariant from 'tiny-invariant'
-
-invariant(process.env.DATABASE_URL, 'DATABASE_URL is required')
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: viteBundler(),
-    buildPath: path.resolve(__dirname, 'build/payload'),
+    vite: (incomingViteConfig) => ({
+      ...incomingViteConfig,
+      build: {
+        ...incomingViteConfig.build,
+        emptyOutDir: false,
+      },
+    }),
   },
   editor: lexicalEditor(),
   db: mongooseAdapter({
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_URL!,
   }),
   collections: [Users],
   typescript: {

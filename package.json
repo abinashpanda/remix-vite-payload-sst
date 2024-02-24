@@ -2,16 +2,15 @@
   "name": "remix-vite-payload-sst",
   "private": true,
   "sideEffects": false,
-  "type": "module",
   "scripts": {
     "build": "run-s build:remix build:payload build:server",
     "build:remix": "remix vite:build",
     "build:payload": "payload build",
-    "build:server": "tsc --project tsconfig.server.json",
-    "dev": "tsx ./server.ts",
+    "build:server": "tsc -p tsconfig.server.json",
+    "dev": "tsx server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "format": "prettier --write --no-error-on-unmatched-pattern \"app/**/*.{ts,tsx}\" \"cms/**/*.{ts}\" *.{ts,tsx,js}",
-    "start": "cross-env NODE_ENV=production node ./server.js",
+    "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node ./dist/server.js",
     "typecheck": "tsc"
   },
   "dependencies": {

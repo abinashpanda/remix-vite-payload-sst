@@ -5,7 +5,9 @@
     "./server.ts"
   ],
   "compilerOptions": {
-    "outDir": "build/express",
-    "noEmit": false
+    "noEmit": false,
+    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
   }
 }
