@@ -1,13 +1,14 @@
-# Welcome to Remix + Vite!
+# Welcome to Remix + Vite + Payload + SST
 
 📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+📖 See [Payload](https://payloadcms.com/) and the [Payload Remix docs](https://payloadcms.com/blog/remix-payload-express-monorepo) for details on integration.
 
 ## Development
 
 Run the Express server with Vite dev middleware:
 
-```shellscript
-npm run dev
+```sh
+pnpm dev
 ```
 
 ## Deployment
@@ -15,20 +16,13 @@ npm run dev
 First, build your app for production:
 
 ```sh
-npm run build
+pnpm build
 ```
 
 Then run the app in production mode:
 
 ```sh
-npm start
+pnpm start
 ```
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Express applications you should be right at home. Just make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
+The project is deployed using [SST](https://sst.dev).
