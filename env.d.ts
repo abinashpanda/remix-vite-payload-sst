@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference types="@remix-run/node" />
 /// <reference types="vite/client" />
 /// <reference types="node" />
@@ -20,7 +19,7 @@ declare module '@remix-run/node' {
   interface AppLoadContext extends RemixRequestContext {}
 }
 
-//overload the request handler to include the payload and user objects
+// overload the request handler to include the payload and user objects
 interface PayloadRequest extends Express.Request {
   payload: Payload
   user?: User

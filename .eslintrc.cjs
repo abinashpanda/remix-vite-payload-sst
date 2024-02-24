@@ -1,83 +1,55 @@
-/**
- * This is intended to be a basic starting point for linting in your app.
- * It relies on recommended configs out of the box for simplicity, but you can
- * and should modify this configuration to best suit your team's needs.
- */
-
 /** @type {import('eslint').Linter.Config} */
-module.exports = {
-  root: true,
+const config = {
+  env: {
+    browser: true,
+    node: true,
+  },
+  globals: {},
+  extends: ['plugin:react/recommended', 'standard', 'plugin:react-hooks/recommended', 'plugin:import/typescript'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
+    ecmaVersion: 2020,
+    sourceType: 'module',
   },
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
+  plugins: ['react', '@typescript-eslint', 'import'],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+    react: {
+      version: '16.14.0',
+    },
   },
+  rules: {
+    'no-undef': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-use-before-define': 'off',
+    camelcase: 'off',
+    'comma-dangle': 'off',
+    'func-call-spacing': 'off',
+    'import/no-absolute-path': 'off',
+    'import/order': ['error', { groups: ['builtin', 'external', 'internal'] }],
+    'import/un-resolved': 'off',
+    indent: 'off',
+    'multiline-ternary': 'off',
+    'no-console': 'warn',
+    'no-unused-expressions': 'off',
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    'no-useless-constructor': 'off',
+    'no-useless-escape': 'off',
+    'prefer-regex-literals': 'off',
+    'react/no-unknown-property': 'error',
+    'react/prop-types': 'off',
+    'react/self-closing-comp': ['error', { component: true, html: true }],
+    'react/react-in-jsx-scope': 'off',
+    'space-before-function-paren': 'off',
+  },
+}
 
-  // Base config
-  extends: ["eslint:recommended"],
-
-  overrides: [
-    // React
-    {
-      files: ["**/*.{js,jsx,ts,tsx}"],
-      plugins: ["react", "jsx-a11y"],
-      extends: [
-        "plugin:react/recommended",
-        "plugin:react/jsx-runtime",
-        "plugin:react-hooks/recommended",
-        "plugin:jsx-a11y/recommended",
-      ],
-      settings: {
-        react: {
-          version: "detect",
-        },
-        formComponents: ["Form"],
-        linkComponents: [
-          { name: "Link", linkAttribute: "to" },
-          { name: "NavLink", linkAttribute: "to" },
-        ],
-        "import/resolver": {
-          typescript: {},
-        },
-      },
-    },
-
-    // Typescript
-    {
-      files: ["**/*.{ts,tsx}"],
-      plugins: ["@typescript-eslint", "import"],
-      parser: "@typescript-eslint/parser",
-      settings: {
-        "import/internal-regex": "^~/",
-        "import/resolver": {
-          node: {
-            extensions: [".ts", ".tsx"],
-          },
-          typescript: {
-            alwaysTryTypes: true,
-          },
-        },
-      },
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:import/recommended",
-        "plugin:import/typescript",
-      ],
-    },
-
-    // Node
-    {
-      files: [".eslintrc.cjs", "server.js"],
-      env: {
-        node: true,
-      },
-    },
-  ],
-};
+module.exports = config

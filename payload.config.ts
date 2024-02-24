@@ -1,8 +1,8 @@
+import path from 'path'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { viteBundler } from '@payloadcms/bundler-vite'
 import { buildConfig } from 'payload/config'
-import path from 'path'
 import Users from './cms/collections/Users'
 
 export default buildConfig({
