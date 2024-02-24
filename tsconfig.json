@@ -30,6 +30,9 @@
     "paths": {
       "~/*": [
         "./app/*"
+      ],
+      "payload/generated-types": [
+        "./cms/payload-types.ts"
       ]
     },
     "noEmit": true

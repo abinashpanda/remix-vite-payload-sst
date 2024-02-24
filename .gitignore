@@ -3,4 +3,5 @@ node_modules
 /.cache
 /build
 /dist
+cms/payload-types.ts
 .env
