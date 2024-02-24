@@ -4,6 +4,9 @@
     "./payload.config.ts",
     "./server.ts"
   ],
+  "exclude": [
+    "./sst.config.ts"
+  ],
   "compilerOptions": {
     "noEmit": false,
     "outDir": "dist",
