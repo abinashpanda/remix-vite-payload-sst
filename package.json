@@ -6,11 +6,12 @@
     "build": "run-s build:remix build:payload build:server",
     "build:remix": "remix vite:build",
     "build:payload": "payload build",
+    "build:dummy": "echo 'dummy build'",
     "build:server": "tsc -p tsconfig.server.json",
     "dev": "tsx server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "format": "prettier --write --no-error-on-unmatched-pattern \"app/**/*.{ts,tsx}\" \"cms/**/*.{ts}\" *.{ts,tsx,js}",
-    "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node ./dist/server.js",
+    "start": "cross-env PAYLOAD_CONFIG_PATH=build/custom/payload.config.js NODE_ENV=production node ./build/custom/server.js",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -61,5 +62,10 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "sst@2.40.3": "patches/sst@2.40.3.patch"
+    }
   }
 }

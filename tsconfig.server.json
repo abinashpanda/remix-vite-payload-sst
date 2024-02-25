@@ -5,11 +5,13 @@
     "./server.ts"
   ],
   "exclude": [
-    "./sst.config.ts"
+    "./sst.config.ts",
+    "./sst-env.d.ts",
+    ".sst/**"
   ],
   "compilerOptions": {
     "noEmit": false,
-    "outDir": "dist",
+    "outDir": "build/custom",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
   }

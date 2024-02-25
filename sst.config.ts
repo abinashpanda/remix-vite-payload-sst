@@ -1,4 +1,4 @@
-import { Service } from 'sst/constructs'
+import { RemixSite } from 'sst/constructs'
 import { SSTConfig } from 'sst'
 
 export default {
@@ -8,12 +8,13 @@ export default {
   }),
   stacks: (app) => {
     app.stack(({ stack }) => {
-      const service = new Service(stack, 'RemixService', {
-        port: 3000,
-        environment: {},
+      const site = new RemixSite(stack, 'RemixSite', {
+        // TODO: This is just for test
+        buildCommand: 'pnpm build:dummy',
       })
+
       stack.addOutputs({
-        SiteUrl: service.url,
+        SiteURL: site.url,
       })
     })
   },
