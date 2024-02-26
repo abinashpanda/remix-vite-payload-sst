@@ -6,7 +6,6 @@
     "build": "run-s build:remix build:payload build:server",
     "build:remix": "remix vite:build",
     "build:payload": "payload build",
-    "build:dummy": "echo 'dummy build'",
     "build:server": "tsc -p tsconfig.server.json",
     "dev": "tsx server.ts",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
