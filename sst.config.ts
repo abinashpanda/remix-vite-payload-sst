@@ -18,15 +18,16 @@ export default {
   }),
   stacks: (app) => {
     app.stack(({ stack }) => {
-      const service = new Service(stack, 'RemixSite', {
+      const site = new Service(stack, 'RemixSite', {
         port: 3000,
         environment: {
           DATABASE_URL,
           PAYLOAD_SECRET,
         },
       })
+
       stack.addOutputs({
-        SiteUrl: service.url,
+        SiteURL: site.url,
       })
     })
   },

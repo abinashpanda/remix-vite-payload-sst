@@ -10,9 +10,9 @@ import invariant from 'tiny-invariant'
 dotenv.config()
 installGlobals()
 
-async function startServer() {
-  const app = express()
+export const app = express()
 
+async function startServer() {
   const viteDevServer =
     process.env.NODE_ENV === 'production'
       ? undefined
@@ -69,6 +69,7 @@ async function startServer() {
   app.all('*', remixHandler)
 
   const port = process.env.PORT || 3000
+  // eslint-disable-next-line no-console
   app.listen(port, () => console.log(`Express server listening at http://localhost:${port}`))
 }
 
