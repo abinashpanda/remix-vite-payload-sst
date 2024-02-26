@@ -7,3 +7,4 @@ cms/payload-types.ts
 .env
 
 .sst
+cdk.context.json
